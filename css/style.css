@@ -1,0 +1,234 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Meiryo',sans-serif;
+  height: 100vh;
+  overflow: hidden;
+}
+
+#matrixCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* クリック操作を通す */
+}
+
+h1 {
+  text-align: center;
+  margin: 50px 0;
+  font-size: 20px;
+}
+
+header, footer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background-color: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+header {
+  top: 0;
+  /*border-bottom: 1px solid #ccc;*/
+}
+
+footer {
+  bottom: 0;
+  /*border-top: 1px solid #ccc;*/
+}
+
+#keywords {
+  position: relative; /*fixed;*/
+  top: 65px;
+  left: 0;
+  right: 0;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.6);
+  /*background-color: #f9f9f9;*/
+  /*border-bottom: 1px solid #ccc;*/
+  z-index: 5;
+  width: 100%;
+  height: 200px;     
+  overflow: hidden;
+  /*max-height: 150px;*/
+  /*overflow-y: auto;*/
+
+}
+
+/* メインチャットUI */
+#main {
+  position: absolute;
+  top: calc(60px + 300px);
+  /*top: 60px;*/
+  bottom: 60px;
+  left: 0;
+  right: 0;
+  overflow-y: auto;
+  padding: 10px;
+  z-index: 1;
+}
+
+input{
+  width: 90%;
+  max-width: 500px;
+  padding: 10px;
+  display: block;
+  margin: 0 auto 10px;
+  overflow-y: auto;
+}
+
+.textarea-wrapper {
+  position: relative;
+  width: 90%;
+  max-width: 500px;
+  margin: 0 auto 20px;
+}
+
+#text {
+  width: 100%;
+  height: 40px;
+  resize: none;
+  overflow-y: hidden;
+  line-height: 1.2;
+  min-height: 40px;
+  max-height: calc(1.2em * 4);
+  padding: 10px 45px 10px 10px; /* 右側にボタン分の余白追加 */
+  box-sizing: border-box;
+  display: block;
+}
+
+textarea {
+  width: 90%;
+  height: 40px;
+  max-width: 500px;
+  display: block;
+  margin: 0 auto 20px;
+  /*height: 200px;*/
+  resize: none; /* 手動リサイズを無効化 */
+  overflow-y: hidden; /* スクロールバーを隠す */
+  line-height: 1.2;
+  min-height: 40px;  /*1行分1.2em */
+  max-height: calc(1.2em * 4); /* 4行分の高さ */
+  padding: 10px;        /* 上下の余白を縮小4px 8px */
+  box-sizing: border-box;  /* paddingを含めたサイズ計算 */
+}
+
+.send-button {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #007bff;
+  padding: 0px;
+  z-index: 2;
+}
+
+/*button {
+  width: 60%;
+  max-width: 200px;
+  height: 50px;
+  margin: 0 auto 30px;
+  display: block;
+  font-size: 16px;
+}*/
+
+#output {
+  width: 90%;
+  max-width: 500px;
+  padding: 10px;
+  display: block;
+  margin: 0 auto 30px;
+  overflow-y: auto;
+  height: 380px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+/* スマホレスポンシブ */
+@media screen and (max-width: 600px) {
+  header, footer {
+    height: 90px;
+    font-size: 14px;
+  }
+
+  #keywords {
+    top: 95px;
+  }
+
+  #main {
+    top: calc(90px + 200px);
+    /*top: 90px;*/
+    bottom: 90px;
+  }
+
+  input, textarea, button {
+    font-size: 14px;
+  }
+}
+
+/* クラウドタグ：キーワード装飾 */
+.keyword-tag {
+  position: absolute;
+  border-radius: 50%;
+  text-align: center;
+  color: #5d5b5b;
+  font-size: 12px;
+  font-weight: bold;
+  display: flex; /*inline-block*/
+  align-items: center;
+  justify-content: center;
+  transform: translate(-50%, -50%);
+  border: 1px solid rgba(0, 0, 0, 0.2); /* ← 輪郭追加 */
+  background-color: #e0e0e0;
+  animation: float 4s ease-in-out infinite;
+  
+  /*line-height: 1;*/
+  /*padding: 10px;*/
+  
+  
+  /*white-space: nowrap;*/
+  /*margin: 5px;*/
+  /*padding: 4px 8px;*/
+  /*border-radius: 4px;*/
+  
+}
+
+.freq-1 { width: 40px; height: 40px; background-color: rgba(224, 247, 250, 0.5); }
+.freq-2 { width: 50px; height: 50px; background-color: rgba(178, 235, 242, 0.5); }
+.freq-3 { width: 60px; height: 60px; background-color: rgba(128, 222, 234, 0.5); }
+.freq-4 { width: 70px; height: 70px; background-color: rgba(77, 208, 225, 0.5); }
+.freq-5 { width: 90px; height: 90px; background-color: rgba(38, 198, 218, 0.5); }
+
+/*@keyframes float {
+  0%   { transform: translate(-50%, -50%) translateY(0px) translateX(0px); }
+  50%  { transform: translate(-50%, -50%) translateY(-10px) translateX(5px); }
+  100% { transform: translate(-50%, -50%) translateY(0px) translateX(0px); }
+}*/
+
+@keyframes float {
+  0%   { transform: translate(-50%, -50%) translateY(0px); }
+  50%  { transform: translate(-50%, -50%) translateY(-10px); }
+  100% { transform: translate(-50%, -50%) translateY(0px); }
+}
+
+
+
+
+
+
+
+

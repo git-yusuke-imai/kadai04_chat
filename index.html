@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chatapp</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/tiny-segmenter"></script>
+</head>
+
+<body>
+    <canvas id="matrixCanvas"></canvas>
+    <header>
+        <h1>Chat Word</h1>
+      </header>
+
+      <div id="keywords"></div>
+
+     
+    <!-- コンテンツ表示画面 -->
+    <div id="main">
+        <div id="output"></div>
+        <div>
+            <input type="text" id="uname" placeholder="User name">
+        </div>
+        <div class="textarea-wrapper" >
+            <textarea id="text" rows="1" placeholder="Aa"></textarea>
+            <button id="send" class="send-button" title="送信">send</button>
+        </div>
+        <!--<button id="send">SEND📩</button>-->
+
+        
+    </div>
+
+    <footer>
+        <div class="footer-menu">
+          <img src="../img/menu1.png" alt="Menu 1">
+          <img src="../img/menu2.png" alt="Menu 2">
+          <img src="../img/menu3.png" alt="Menu 3">
+        </div>
+    </footer>
+
+
+<!-- ① jQueryを通常読み込み（グローバル） -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<!-- TinySegmenterの読み込み -->
+<script src="https://cdn.jsdelivr.net/npm/tiny-segmenter@0.0.3/tiny-segmenter.min.js"></script>
+<!-- ② Firebase SDKs -->
+<script type="module" src="https://www.gstatic.com/firebasejs/11.8.1/firebase-app.js"></script>
+<script type="module" src="https://www.gstatic.com/firebasejs/11.8.1/firebase-firestore.js"></script>
+<!-- ③ あとから Firebaseを使うJSを読み込む -->
+<script type="module" src="main.js"></script>
+
+<script src="matrix.js"></script>
+
+</body>
+
+</html>
