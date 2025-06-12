@@ -5,7 +5,7 @@ Chat Word App
 - チャットの内容をキーワードタグで可視化
 
 ## ③アプリのデプロイURL
-デプロイしている場合はURLを記入（任意）
+https://git-yusuke-imai.github.io/kadai04_chat/
 
 ## ④アプリのログイン用IDまたはPassword（ある場合）
 - ID: なし
